@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./src/piece.h"
-#include "./board.h"
+#include "./src/board.h"
 
 int main(void)
 {

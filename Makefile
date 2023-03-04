@@ -1,7 +1,7 @@
-all: cshogi.c ./src/piece.c board.c
+all: cshogi.c ./src/piece.c ./src/board.c
 	gcc -c cshogi.c
 	gcc -c ./src/piece.c
-	gcc -c board.c
+	gcc -c ./src/board.c
 	mv *.o ./bin/
 	gcc -o cshogi ./bin/cshogi.o ./bin/piece.o ./bin/board.o
 	touch test.sh
@@ -9,9 +9,10 @@ all: cshogi.c ./src/piece.c board.c
 piece: ./src/piece.c
 	gcc -c ./src/piece.c
 	mv piece.o ./bin
+	touch test.sh
 
-board.o: board.c
-	gcc -c board.c
+board: ./src/board.c
+	gcc -c ./src/board.c
 	touch test.sh
 
 test: test.sh
