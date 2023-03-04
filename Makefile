@@ -1,6 +1,9 @@
-all: piece.c board.c
+all: cshogi.c piece.c board.c
+	gcc -c cshogi.c
 	gcc -c piece.c
 	gcc -c board.c
+	mv *.o ./bin/
+	gcc -o cshogi ./bin/cshogi.o ./bin/piece.o ./bin/board.o
 	touch test.sh
 
 piece.o: piece.c
@@ -12,4 +15,4 @@ board.o: board.c
 test: test.sh
 	sh test.sh
 clean:
-	rm -f *.o ./test/*.o ./test/test
+	rm -f cshogi ./bin/*.o ./test/*.o ./test/test
