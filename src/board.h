@@ -6,22 +6,24 @@
 #include "./piece.h"
 
 // MACRO
+#define CSHOGI_OUTOF_BOARD -1
 
 // TYPE
 typedef struct square_s square_t;
 struct  square_s {
-    cshogi_int_t    position;
-    piece_t        *piece;
-    square_t       *top_left;
-    square_t       *top;
-    square_t       *top_right;
-    square_t       *left;
-    square_t       *right;
-    square_t       *bottom_left;
-    square_t       *bottom;
-    square_t       *bottom_right;
-    bool            is_first_players_base;
-    bool            is_second_players_base;
+    cshogi_int_t       position;
+    piece_t            piece;
+    cshogi_int_t       square_name;
+    cshogi_int_t       top_left;
+    cshogi_int_t       top;
+    cshogi_int_t       top_right;
+    cshogi_int_t       left;
+    cshogi_int_t       right;
+    cshogi_int_t       bottom_left;
+    cshogi_int_t       bottom;
+    cshogi_int_t       bottom_right;
+    bool               is_first_players_base;
+    bool               is_second_players_base;
 };
 
 typedef struct {
