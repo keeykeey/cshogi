@@ -8,8 +8,14 @@ int main(void)
     board_t *board = init_board();
 
     printf("GAME START\n");
-    printf("%d |",board->square[0]->position);
-    putchar('\n');
+    
+    for (int i = 0; i < 9; i++) {
+        printf(" | ");
+        for (int j=0; j < 9; j++) {
+            printf("%d | ",board->square[i * 9 + j]->position);
+        }
+        putchar('\n');
+    }
 
     free(board);
     return 0;
