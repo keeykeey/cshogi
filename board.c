@@ -7,7 +7,7 @@ board_t *
 init_board()
 {
     board_t *board;
-    board = (board_t*)malloc(sizeof(board_t));
+    board = calloc(1, sizeof(board_t));
 
     square_t tmp_square;
     tmp_square.position = 91;
