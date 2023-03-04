@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./board.h"
-#include "./src/piece.h"
+#include "./piece.h"
 
 board_t *
 init_board()

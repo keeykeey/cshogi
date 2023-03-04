@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include "./conf.h"
-#include "./src/piece.h"
+#include "./piece.h"
 
 // MACRO
 
