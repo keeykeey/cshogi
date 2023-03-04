@@ -2,3 +2,5 @@ cshogi
 
 *.o
 */*.o
+
+test/test
