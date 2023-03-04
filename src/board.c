@@ -39,7 +39,7 @@ init_board()
 
     for (int h = 1; h <= 9; h++) {
         int w = 9;
-        while(w >= 0) {
+        while(w >= 1) {
             sq->position  = w * 10 + h;
             if (h == 1) {
                 sq->top_left  = CSHOGI_OUTOF_BOARD;
@@ -70,11 +70,5 @@ init_board()
         }
     }
 
-    /*
-    square_t tmp_square;
-    tmp_square.position = 91;
-
-    board->square[0] = &tmp_square;
-    */
     return board;
 }
