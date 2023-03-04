@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./piece.h"
+#include "./src/piece.h"
 #include "./board.h"
 
 int main(void)
