@@ -13,7 +13,6 @@ typedef struct square_s square_t;
 struct  square_s {
     cshogi_int_t       position;
     piece_t            piece;
-    cshogi_int_t       square_name;
     cshogi_int_t       top_left;
     cshogi_int_t       top;
     cshogi_int_t       top_right;
