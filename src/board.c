@@ -40,6 +40,7 @@ init_board()
     for (int h = 1; h <= 9; h++) {
         int w = 9;
         while(w >= 1) {
+            // set position
             sq->position  = w * 10 + h;
             if (h == 1) {
                 sq->top_left  = CSHOGI_OUTOF_BOARD;
@@ -62,6 +63,7 @@ init_board()
                 sq->bottom_right = (sq->position % 9 != 8) ? sq->position + 10 : CSHOGI_OUTOF_BOARD;
             }
 
+            // set platers base
             if (h <= 3) {
                 sq->is_first_players_base = false;
                 sq->is_second_players_base = true;
@@ -71,6 +73,70 @@ init_board()
             } else {
                 sq->is_first_players_base = false;
                 sq->is_second_players_base = false;
+            }
+
+            // set piece_t
+            if (h == 1 || h == 9) {
+                switch (w) {
+                    case 9:
+                        sq->piece.type = KYOU;
+                        break;
+                    case 8:
+                        sq->piece.type = KEI;
+                        break;
+                    case 7:
+                        sq->piece.type = GIN;
+                        break;
+                    case 6:
+                        sq->piece.type = KIN;
+                        break;
+                    case 5:
+                        sq->piece.type = GYOKU;
+                        break;
+                    case 4:
+                        sq->piece.type = KIN;
+                        break;
+                    case 3:
+                        sq->piece.type = GIN;
+                        break;
+                    case 2:
+                        sq->piece.type = KEI;
+                        break;
+                    case 1:
+                        sq->piece.type = KYOU;
+                        break;
+                    default:
+                        sq->piece.type = EMPTY;
+                        break;
+                }
+            } else if (h == 2) {
+                switch (w) {
+                    case 8:
+                        sq->piece.type = HISHA;
+                        break;
+                    case 2:
+                        sq->piece.type = KAKU;
+                        break;
+                    default:
+                        sq->piece.type = EMPTY;
+                        break;
+                }
+            } else if (h == 3 || h == 7) {
+                sq->piece.type = FU;
+            } else if (h == 8) {
+                switch (w) {
+                    case 8:
+                        sq->piece.type = KAKU;
+                        break;
+                    case 2:
+                        sq->piece.type = HISHA;
+                        break;
+                    default:
+                        sq->piece.type = EMPTY;
+                        break;
+                }
+            } else {
+                sq->piece.type = EMPTY;
             }
 
             board->square[(h-1)*9 + 9 - w] = sq;

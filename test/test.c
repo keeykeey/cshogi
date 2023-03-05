@@ -150,6 +150,32 @@ int test_board_97_players_base()
     }
 }
 
+int test_board_91_piece_type()
+{
+    board_t *board = init_board();
+    if (board->square[0]->piece.type == KYOU) {
+        free(board);
+        return 0;
+    } else {
+        printf("failed in test_board_91_piece_type : expect 7 but got %d\n",board->square[0]->piece.type);
+        free(board);
+        return 1;
+    }
+}
+
+int board_display()
+{
+    board_t *board = init_board();
+    for (int i = 0; i < 9; i++) {
+        printf(" | ");
+        for (int j=0; j < 9; j++) {
+            printf("%d | ",board->square[i * 9 + j]->piece.type);
+        }
+        putchar('\n');
+    }
+    return 0;
+}
+
 int main(void) 
 {
     int failed = test_piece_type();
@@ -161,6 +187,8 @@ int main(void)
     failed += test_board_93_players_base();
     failed += test_board_55_players_base();
     failed += test_board_97_players_base();
+    failed += test_board_91_piece_type();
+    tmptest();
 
     printf("FAILED : %d\n",failed);
     return failed;
