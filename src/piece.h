@@ -5,7 +5,7 @@
 
 // TYPE
 typedef enum {
-    GYOKU,
+    GYOKU = 1,
     HISHA,
     KAKU,
     KIN,
@@ -18,15 +18,15 @@ typedef enum {
 typedef enum {
     FIRST_PLAYER = 1,
     SECOND_PLAYER,
-} owner_e;
+} piece_owner_e;
 
 typedef struct {
     piece_type_e       type;
-    //owner_e            owner;
+    piece_owner_e      owner;
 } piece_t;
 
 // PROTOTYPE
-piece_t *init_piece(piece_type_e piece_type);
+piece_t *init_piece(piece_type_e piece_type, piece_owner_e piece_owner);
 int test(void);
 
 #endif
