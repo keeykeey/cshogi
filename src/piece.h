@@ -5,7 +5,7 @@
 
 // TYPE
 typedef enum {
-    EMPYT,
+    EMPTY,
     GYOKU,
     HISHA,
     KAKU,
