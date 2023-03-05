@@ -188,7 +188,7 @@ int main(void)
     failed += test_board_55_players_base();
     failed += test_board_97_players_base();
     failed += test_board_91_piece_type();
-    tmptest();
+    board_display();
 
     printf("FAILED : %d\n",failed);
     return failed;
