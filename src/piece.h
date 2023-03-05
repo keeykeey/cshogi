@@ -17,7 +17,8 @@ typedef enum {
 } piece_type_e;
 
 typedef enum {
-    FIRST_PLAYER = 1,
+    DONTBELONG,
+    FIRST_PLAYER,
     SECOND_PLAYER,
 } piece_owner_e;
 
