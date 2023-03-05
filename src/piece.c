@@ -2,17 +2,13 @@
 #include "./piece.h"
 
 piece_t *
-init_piece(piece_type_e piece_type)
+init_piece(piece_type_e ptype, piece_owner_e powner)
 {
     piece_t *piece;
     piece = calloc(1, sizeof(piece_t));
 
-    piece->type = piece_type;
+    piece->type = ptype;
+    piece->owner = powner;
 
     return piece;
-}
-
-int test(void)
-{
-    return 0;
 }

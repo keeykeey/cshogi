@@ -3,16 +3,50 @@
 #include "../src/piece.h"
 #include "../src/board.h"
 
-int test_piece()
+int test_piece_type()
 {
     piece_type_e ptype = GYOKU;
-    piece_t *piece = init_piece(ptype);
+    piece_owner_e powner = FIRST_PLAYER;
+    piece_t *piece = init_piece(ptype, powner);
     
-    if (piece->type == 0) {
+    if (piece->type == 1) {
         free(piece);
         return 0;
     } else {
         free(piece);
+        printf("failed in test_piece_type : expect 1 but got %d\n",piece->type);
+        return 1;
+    }
+}
+
+int test_piece_owner1()
+{
+    piece_type_e ptype = GYOKU;
+    piece_owner_e powner = FIRST_PLAYER;
+    piece_t *piece = init_piece(ptype, powner);
+    
+    if (piece->owner == 1) {
+        free(piece);
+        return 0;
+    } else {
+        free(piece);
+        printf("failed in test_piece_owner1 : expect 1 but got %d\n",piece->owner);
+        return 1;
+    }
+}
+
+int test_piece_owner2()
+{
+    piece_type_e ptype = GYOKU;
+    piece_owner_e powner = SECOND_PLAYER;
+    piece_t *piece = init_piece(ptype, powner);
+    
+    if (piece->owner == 2) {
+        free(piece);
+        return 0;
+    } else {
+        free(piece);
+        printf("failed in test_piece_owner : expect 2 but got %d\n",piece->owner);
         return 1;
     }
 }
@@ -118,7 +152,9 @@ int test_board_97_players_base()
 
 int main(void) 
 {
-    int failed = test_piece();
+    int failed = test_piece_type();
+    failed += test_piece_owner1();
+    failed += test_piece_owner2();
     failed += test_board_91_position();
     failed += test_board_82_position();
     failed += test_board_19_position();
