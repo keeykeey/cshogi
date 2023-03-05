@@ -163,6 +163,26 @@ int test_board_91_piece_type()
     }
 }
 
+int test_board_go_forward()
+{
+    board_t *board = init_board();
+    board_go_forward(board, 8, 17);
+    if (board->square[17]->piece.type == KYOU) {
+        if (board->square[17]->piece.owner == SECOND_PLAYER) {
+            free(board);
+            return 0;
+        } else {
+            printf("failed in test_board_go_forward : expect owner is  2 but got %d\n", board->square[17]->piece.owner);
+            free(board);
+            return 1;
+        }
+    } else {
+        printf("failed in test_board_go_forward : expect type is 7 but got %d\n", board->square[17]->piece.type);
+        free(board);
+        return 1;
+    }
+}
+
 int board_display()
 {
     board_t *board = init_board();
@@ -173,6 +193,8 @@ int board_display()
         }
         putchar('\n');
     }
+    putchar('\n');
+    free(board);
     return 0;
 }
 
@@ -188,6 +210,7 @@ int main(void)
     failed += test_board_55_players_base();
     failed += test_board_97_players_base();
     failed += test_board_91_piece_type();
+    failed += test_board_go_forward();
     board_display();
 
     printf("FAILED : %d\n",failed);

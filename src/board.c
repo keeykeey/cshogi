@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "./conf.h"
 #include "./board.h"
 #include "./piece.h"
 
@@ -76,7 +77,8 @@ init_board()
             }
 
             // set piece_t
-            if (h == 1 || h == 9) {
+            if (h == 1) {
+                sq->piece.owner = SECOND_PLAYER;
                 switch (w) {
                     case 9:
                         sq->piece.type = KYOU;
@@ -109,33 +111,79 @@ init_board()
                         sq->piece.type = EMPTY;
                         break;
                 }
-            } else if (h == 2) {
+            } else if (h == 9) {
+                sq->piece.owner = FIRST_PLAYER;
                 switch (w) {
+                    case 9:
+                        sq->piece.type = KYOU;
+                        break;
                     case 8:
-                        sq->piece.type = HISHA;
+                        sq->piece.type = KEI;
+                        break;
+                    case 7:
+                        sq->piece.type = GIN;
+                        break;
+                    case 6:
+                        sq->piece.type = KIN;
+                        break;
+                    case 5:
+                        sq->piece.type = GYOKU;
+                        break;
+                    case 4:
+                        sq->piece.type = KIN;
+                        break;
+                    case 3:
+                        sq->piece.type = GIN;
                         break;
                     case 2:
-                        sq->piece.type = KAKU;
+                        sq->piece.type = KEI;
+                        break;
+                    case 1:
+                        sq->piece.type = KYOU;
                         break;
                     default:
                         sq->piece.type = EMPTY;
                         break;
                 }
-            } else if (h == 3 || h == 7) {
+
+            } else if (h == 2) {
+                switch (w) {
+                    case 8:
+                        sq->piece.owner = FIRST_PLAYER;
+                        sq->piece.type = HISHA;
+                        break;
+                    case 2:
+                        sq->piece.owner = FIRST_PLAYER;
+                        sq->piece.type = KAKU;
+                        break;
+                    default:
+                        sq->piece.owner = DONTBELONG;
+                        sq->piece.type = EMPTY;
+                        break;
+                }
+            } else if (h == 3) {
+                sq->piece.owner = SECOND_PLAYER;
+                sq->piece.type = FU;
+            } else if (h == 7) {
+                sq->piece.owner = FIRST_PLAYER;
                 sq->piece.type = FU;
             } else if (h == 8) {
                 switch (w) {
                     case 8:
+                        sq->piece.owner = SECOND_PLAYER;
                         sq->piece.type = KAKU;
                         break;
                     case 2:
+                        sq->piece.owner = SECOND_PLAYER;
                         sq->piece.type = HISHA;
                         break;
                     default:
+                        sq->piece.owner = DONTBELONG;
                         sq->piece.type = EMPTY;
                         break;
                 }
             } else {
+                sq->piece.owner = DONTBELONG;
                 sq->piece.type = EMPTY;
             }
 
@@ -146,4 +194,15 @@ init_board()
     }
 
     return board;
+}
+
+void board_go_forward(board_t *board, cshogi_int_t board_el_from, cshogi_int_t board_el_to)
+{
+    piece_t tmp = board->square[board_el_to]->piece;
+
+    board->square[board_el_to]->piece.type = board->square[board_el_from]->piece.type;
+    board->square[board_el_to]->piece.owner = board->square[board_el_from]->piece.owner;
+
+    board->square[board_el_from]->piece.type = EMPTY;
+    board->square[board_el_from]->piece.owner = DONTBELONG;
 }

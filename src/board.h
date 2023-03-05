@@ -32,5 +32,6 @@ typedef struct {
 // PROTOTYPE
 square_t   *init_square(void);
 board_t    *init_board(void);
+void        board_go_forward(board_t *board, cshogi_int_t board_el_from, cshogi_int_t board_el_to);
 
 #endif
