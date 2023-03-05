@@ -62,7 +62,16 @@ init_board()
                 sq->bottom_right = (sq->position % 9 != 8) ? sq->position + 10 : CSHOGI_OUTOF_BOARD;
             }
 
-            sq->square_name = w * 10 + h;
+            if (h <= 3) {
+                sq->is_first_players_base = false;
+                sq->is_second_players_base = true;
+            } else if (h >= 7) {
+                sq->is_first_players_base = true;
+                sq->is_second_players_base = false;
+            } else {
+                sq->is_first_players_base = false;
+                sq->is_second_players_base = false;
+            }
 
             board->square[(h-1)*9 + 9 - w] = sq;
             sq++;
